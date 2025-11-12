@@ -430,21 +430,24 @@
     });
     
     // --- AUTO-START FUNCTIONALITY ---
+    // --- AUTO-START FUNCTIONALITY ---
     function initAutoPlay() {
-      // 1. Auto-Start Music
-      bgm.play().then(() => {
+    // 1. Auto-Start Music after 2 seconds
+    setTimeout(() => {
+        bgm.play().then(() => {
         playBtn.textContent = 'Pause Our Song';
-      }).catch(error => {
+        }).catch(error => {
         console.log("Autoplay was prevented by the browser.");
         playBtn.textContent = 'Play Our Song';
-      });
+        });
+    }, 500); // <-- added delay
 
-      // 2. Auto-Start Hearts Interval
-      if (!heartsRunning) {
+    // 2. Auto-Start Hearts Interval
+    if (!heartsRunning) {
         heartInterval = setInterval(spawnHeart, 250);
         heartsRunning = true;
         startHeartsBtn.textContent = 'Stop Sending Love ❤️'; // UPDATED
-      }
+    }
     }
 
     // Run the auto-start function when the page is fully loaded
