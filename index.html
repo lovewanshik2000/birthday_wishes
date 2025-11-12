@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday — Prachi 💖 My Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---- Reset & layout ---- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#222}
+    /* Updated background with a subtle animation */
+    body{background: radial-gradient(ellipse at 10% 10%, #ffdbe8 0%, #fff1f7 40%, #fff 100%);overflow-x:hidden; background-attachment:fixed; animation: bodyBgPulse 25s infinite alternate}
+    @keyframes bodyBgPulse{
+        0%{background: radial-gradient(ellipse at 10% 10%, #ffdbe8 0%, #fff1f7 40%, #fff 100%);}
+        100%{background: radial-gradient(ellipse at 90% 90%, #ffe4ec 0%, #fff5f8 40%, #fff 100%);}
+    }
+    .container{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px}
+
+    /* ---- Card (Increased Max Width) ---- */
+    .card{width:100%;max-width:1300px; /* Increased from 1100px */
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,248,250,0.95));border-radius:24px;box-shadow:0 12px 40px rgba(200,40,90,0.15);padding:35px;position:relative;overflow:hidden; transition: transform .3s ease; border: 1px solid rgba(255,100,150,0.1)}
+    .card:hover{transform: translateY(-3px); box-shadow:0 18px 50px rgba(200,40,90,0.2)}
+
+    /* glowing header */
+    .title{font-size:45px;font-weight:700;color:#d81b60;text-align:center;margin-bottom:8px;text-shadow:0 0 15px rgba(216,27,96,0.3); animation: headerGlow 5s infinite alternate}
+    @keyframes headerGlow{
+        0%{text-shadow:0 0 10px rgba(216,27,96,0.2)}
+        100%{text-shadow:0 0 25px rgba(216,27,96,0.5)}
+    }
+    .subtitle{font-size:20px;color:#7a2b4f;text-align:center;margin-bottom:25px}
+
+    /* hero area */
+    .hero{display:grid;grid-template-columns:1fr 440px;gap:30px;align-items:center}
+    @media (max-width:950px){.hero{grid-template-columns:1fr;}
+      .hero-right{order:-1; margin-bottom:20px;}
+    }
+
+    /* left: message and CTA */
+    .message{padding:18px 0; max-width:600px;}
+    .message p{font-size:18px;line-height:1.6;color:#4b2340}
+    .big-wish{font-size:32px;color:#b71c59;margin-top:10px;font-weight:700; line-height:1.3}
+
+    /* typed effect */
+    .typed{display:inline-block;border-right:3px solid rgba(183,28,89,0.8);padding-right:6px;animation:blink .9s steps(1 infinite)}
+    @keyframes blink{50%{border-color:transparent}}
+
+    /* right: image collage */
+    .hero-right{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;align-content:start;justify-items:center}
+    .hero-right img{width:100%;height:210px;object-fit:cover;border-radius:16px;box-shadow:0 10px 30px rgba(183,28,89,0.15);transform-origin:center;transition:transform .45s ease, box-shadow .3s ease; border: 3px solid transparent; cursor: pointer;}
+    .hero-right img:hover{transform:scale(1.06) rotate(-2deg); box-shadow:0 15px 45px rgba(183,28,89,0.3); border-color: #ffb6c1}
+
+    /* New: Bottom Content Grid */
+    .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px;padding-top:25px;border-top:1px solid rgba(255,100,150,0.1)}
+    @media (max-width:700px){.content-grid{grid-template-columns:1fr;}}
+
+    .section-title{font-size:24px;color:#b71c59;font-weight:700;margin-bottom:12px;display:flex;align-items:center; gap:8px}
+    .love-point{font-size:17px; margin-bottom:10px; padding-left:15px; position:relative; color:#5b2d48; transition:color .3s ease}
+    .love-point:before{content:"\2764"; color:#ff6fa9; position:absolute; left:0; font-size:14px; top:3px}
+    .love-point:hover{color:#b71c59}
+
+    .poem-box{background:rgba(255,240,245,0.7); padding:20px; border-radius:16px; border-left:4px solid #d81b60; box-shadow:0 4px 15px rgba(255,100,150,0.05)}
+    .poem-box p{font-style:italic; line-height:1.7; color:#5b2d48}
+    .poem-box em{display:block; margin-top:15px; text-align:right; font-style:normal; font-weight:600; color:#b71c59}
+
+    /* slideshow across top */
+    .slideshow{position:relative;height:350px;border-radius:18px;overflow:hidden;margin-bottom:20px; box-shadow:0 8px 25px rgba(183,28,89,0.1)}
+    .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);transition:opacity 1.2s ease,transform 1.2s ease; filter:brightness(0.95)}
+    .slide.active{opacity:1;transform:scale(1); filter:brightness(1)}
+
+    /* hearts + sparkles */
+    .hearts{position:absolute;pointer-events:none;inset:0;z-index:1; overflow:hidden;}
+    .heart{position:absolute;width:18px;height:18px;background:radial-gradient(circle at 30% 30%, #fff, #ffd6e8 10%, #ff6fa9 60%);transform:rotate(45deg);left:50%;top:50%;opacity:.9;border-radius:3px; will-change: transform, opacity;}
+    .heart:before,.heart:after{content:"";position:absolute;width:18px;height:18px;background:inherit;border-radius:50%}
+    .heart:before{top:-9px;left:0}
+    .heart:after{left:9px;top:0}
+
+    /* controls */
+    .controls{display:flex;flex-wrap:wrap; gap:12px;align-items:center;justify-content:center;margin-top:20px}
+    .btn{background:#ff6fa9;color:white;padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(183,28,89,0.18); transition: all .3s ease; letter-spacing: 0.5px;}
+    .btn:hover{background:#e94a7c; box-shadow:0 10px 25px rgba(183,28,89,0.25); transform: translateY(-2px)}
+    .btn.ghost{background:transparent;color:#b71c59;border:1px solid rgba(183,28,89,0.3);box-shadow:none}
+    .btn.ghost:hover{background:#ffebee; color:#d81b60; border-color:#d81b60; transform: translateY(-1px)}
+
+    /* footer hearts */
+    .footer{display:flex;align-items:center;justify-content:center;padding-top:20px;gap:12px; animation: bounce 3s infinite ease-in-out}
+    @keyframes bounce{
+        0%,100%{transform: translateY(0)}
+        50%{transform: translateY(-4px)}
+    }
+    .small-heart{width:12px;height:12px;background:#ff6fa9;border-radius:50%; box-shadow:0 0 8px rgba(255,100,150,0.5); transition:transform .3s ease}
+    .small-heart:nth-child(2){transform:scale(1.2)}
+    .small-heart:hover{transform:scale(1.5)}
+
+    footer.note{text-align:center;margin-top:16px;color:#7a2b4f}
+
+    /* responsive tweaks */
+    @media (max-width:600px){.title{font-size:32px}.slideshow{height:250px}.card{padding:25px}}
+
+    /* --- Modal/Lightbox Styles --- */
+    .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+        animation: fadeIn 0.3s;
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 90%;
+        max-width: 900px;
+        max-height: 90vh;
+        object-fit: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255,100,150,0.5);
+        animation: zoomIn 0.4s;
+        transition: opacity 0.3s; /* Smooth image transition */
+    }
+
+    /* Slider Navigation Styles */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+        z-index: 1002;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: rgba(255,100,150,0.8);
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        z-index: 1003;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: #ff6fa9;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    @keyframes fadeIn {
+        from {opacity: 0} 
+        to {opacity: 1}
+    }
+    
+    @keyframes zoomIn {
+        from {transform: translate(-50%, -50%) scale(0.8)} 
+        to {transform: translate(-50%, -50%) scale(1)}
+    }
+    /* --- End Modal Styles --- */
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="slideshow" aria-hidden="false">
+        <div class="slide active" style="background-image:url('images/banner1.png')"></div>
+        <div class="slide" style="background-image:url('images/banner2.png')"></div>
+        <div class="slide" style="background-image:url('images/img3.jpg')"></div>
+        <div class="slide" style="background-image:url('images/img4.jpg')"></div>
+        <div class="slide" style="background-image:url('images/img5.jpg')"></div>
+      </div>
+
+      <h1 class="title">Happy Birthday, My Love Kitkat 💖</h1>
+      <div class="subtitle">A special animated surprise made with all my love</div>
+
+      <div class="hero">
+        <div class="message">
+          <p class="big-wish">To the brightest smile in my life, my love and my soulmate —</p>
+          <p>Every single moment spent with you is a cherished memory, a beautiful chapter in our story. Today, I celebrate not just your birthday, but the incredible gift you are to my world. You are my reason, my anchor, and my most wonderful adventure.</p>
+
+          <p style="margin-top:16px; font-weight:600; color:#b71c59;">My love for you grows stronger with every sunrise.</p>
+
+          <p style="margin-top:22px;font-size:18px;color:#5b2d48">A few words from my heart: <span class="typed" id="typed"></span></p>
+
+          <div class="controls">
+            <button class="btn" id="playPause">Play Our Song</button>
+            <button class="btn ghost" id="startHearts">Send More Love</button>
+            <button class="btn ghost" id="downloadBtn">Save This Page</button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <img src="images/img1.jpg" alt="photo 1">
+          <img src="images/img2.jpg" alt="photo 2">
+          <img src="images/img3.jpg" alt="photo 3">
+          <img src="images/img4.jpg" alt="photo 4">
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="why-i-love-you">
+          <h3 class="section-title">Why I Love You ❤️</h3>
+          <ul style="list-style:none; padding:0;">
+            <li class="love-point">Your incredible **kindness** and **warm heart**.</li>
+            <li class="love-point">The way you **laugh**—it's the best sound in the world.</li>
+            <li class="love-point">Your **determination** and how you chase your dreams.</li>
+            <li class="love-point">The quiet, simple **comfort** of being next to you.</li>
+            <li class="love-point">You make me a **better person** every single day.</li>
+          </ul>
+        </div>
+        <div class="special-message">
+          <h3 class="section-title">A Special Dedication 🌹</h3>
+          <div class="poem-box">
+            <p>"If I had a single flower for every time I thought of you, I could walk forever in my garden."</p>
+            <p style="margin-top:15px; font-weight:600;">"You are the poem I never knew how to write, and the adventure I'd always yearned for."</p>
+            <em>— Yours Forever</em>
+          </div>
+        </div>
+      </div>
+      <div class="footer" aria-hidden="true">
+        <div class="small-heart" style="background:#ff9ac1"></div>
+        <div class="small-heart" style="background:#ff6fa9"></div>
+        <div class="small-heart" style="background:#e94a7c"></div>
+      </div>
+
+      <p class="note" style="text-align:center;color:#7a2b4f;margin-top:16px">Tip: **Click the photos below** to open the Love Gallery! 🥂</p>
+
+      <div class="hearts" id="heartsLayer"></div>
+
+    </div>
+  </div>
+
+  <audio id="bgm" loop>
+    <source src="audio/Kitna Suhana Sa Yeh Apna Safar Hai.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="imageModal" class="modal">
+    <span class="close-btn">&times;</span>
+    <img class="modal-content" id="img01" alt="Full size love photo">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <script>
+    // ---------- Configuration ----------
+    const typedPhrases = [
+      "You are my whole universe.",
+      "My heart beats for you.",
+      "Forever & always.",
+      "Happy Birthday, Prachi!"
+    ];
+
+    // --- Modal/Gallery Variables ---
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("img01");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
+    const galleryImages = Array.from(document.querySelectorAll('.hero-right img'));
+    const imageSources = galleryImages.map(img => img.src);
+    let currentImageIndex = 0;
+    
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Function to show a specific image in the modal
+    function showImage(n) {
+        // Handle wrapping around the image array
+        if (n >= imageSources.length) {currentImageIndex = 0}    
+        else if (n < 0) {currentImageIndex = imageSources.length - 1}
+        else {currentImageIndex = n;}
+
+        // Fade out the current image, change source, then fade in (for smoother transition)
+        modalImg.style.opacity = 0;
+        setTimeout(() => {
+            modalImg.src = imageSources[currentImageIndex];
+            modalImg.style.opacity = 1;
+        }, 150); // Small delay to allow fade out
+    }
+    
+    // Function to change slides (called by arrow buttons)
+    function plusSlides(n) {
+      showImage(currentImageIndex + n);
+    }
+    
+    // --------- Image Gallery Modal/Lightbox Control (UPDATED) ---------
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        modal.style.display = "block";
+        document.body.style.overflow = 'hidden';
+        showImage(index); // Show the clicked image first
+      });
+    });
+    
+    // Close modal on 'x' button click
+    closeBtn.onclick = closeModal;
+
+    // Close modal when user clicks anywhere outside the image (on the modal background)
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    };
+    
+    // Close modal on escape key press or navigate with arrow keys
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === 'block') {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                plusSlides(-1);
+            } else if (e.key === 'ArrowRight') {
+                plusSlides(1);
+            }
+        }
+        // keyboard shortcut (H) toggles hearts
+        if (e.key.toLowerCase()==='h'){ startHeartsBtn.click(); }
+    });
+    
+    
+    // --------- Typed effect ---------
+    const typedEl = document.getElementById('typed');
+    let tIdx = 0, chIdx = 0, deleting = false;
+    function typedTick(){
+      const phrase = typedPhrases[tIdx];
+      if(!deleting){
+        typedEl.textContent = phrase.slice(0, chIdx+1);
+        chIdx++;
+        if(chIdx === phrase.length){ setTimeout(()=>deleting=true,2000); }
+      } else {
+        typedEl.textContent = phrase.slice(0, chIdx-1);
+        chIdx--;
+        if(chIdx===0){ deleting=false; tIdx=(tIdx+1)%typedPhrases.length; }
+      }
+      setTimeout(typedTick, deleting ? 50 : 90);
+    }
+    typedTick();
+
+    // --------- Slideshow (Slower transition) ---------
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let cur = 0;
+    setInterval(()=>{
+      slides[cur].classList.remove('active');
+      cur = (cur+1)%slides.length;
+      slides[cur].classList.add('active');
+    }, 6000);
+
+    // --------- Floating hearts generator (Slightly denser spawn) ---------
+    const heartsLayer = document.getElementById('heartsLayer');
+    let heartsRunning = false;
+    function spawnHeart(){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      const size = 15 + Math.random()*30;
+      h.style.width = size+'px'; h.style.height = size+'px';
+      h.style.left = Math.random()*100 + '%';
+      h.style.top = (-20 - Math.random()*20) + 'px';
+      h.style.opacity = 0.9 - Math.random()*0.4;
+      heartsLayer.appendChild(h);
+      const animDur = 4000 + Math.random()*3000;
+      
+      // Heart animation keyframes (more dramatic movement)
+      h.animate([
+        {transform: `translateY(0) rotate(0deg) scale(${size/35})`, opacity: h.style.opacity, offset: 0},
+        {transform: `translateY(25vh) rotate(-10deg) scale(${size/30})`, offset: 0.3},
+        {transform: `translateY(50vh) rotate(10deg) scale(${size/25})`, offset: 0.6},
+        {transform: `translateY(110vh) rotate(-20deg) scale(0.5)`, opacity:0, offset: 1}
+      ],{duration:animDur,iterations:1,easing:'cubic-bezier(.4, 0, .6, 1)'}).onfinish = ()=>h.remove();
+    }
+    let heartInterval;
+    const startHeartsBtn = document.getElementById('startHearts');
+    startHeartsBtn.addEventListener('click', (event)=>{
+      if(heartsRunning){ 
+        clearInterval(heartInterval); 
+        heartsRunning = false; 
+        event.target.textContent = 'Send More Love'; 
+      }
+      else{ 
+        heartInterval = setInterval(spawnHeart, 250); 
+        heartsRunning = true; 
+        event.target.textContent = 'Stop Sending Love ❤️'; // UPDATED
+      }
+    });
+
+    // auto-start a few hearts (initial burst)
+    for(let i=0;i<10;i++) setTimeout(spawnHeart, i*150);
+
+    // --------- Music control ---------
+    const bgm = document.getElementById('bgm');
+    const playBtn = document.getElementById('playPause');
+    playBtn.addEventListener('click', ()=>{
+      if(bgm.paused){ bgm.play().catch(()=>{}); playBtn.textContent='Pause Our Song'; }
+      else{ bgm.pause(); playBtn.textContent='Play Our Song'; }
+    });
+
+    // --------- Download single-file page ---------
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const html = '<!doctype html>' + '\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'Happy-Birthday-Prachi.html'; a.click(); URL.revokeObjectURL(url);
+    });
+    
+    // --- AUTO-START FUNCTIONALITY ---
+    function initAutoPlay() {
+      // 1. Auto-Start Music
+      bgm.play().then(() => {
+        playBtn.textContent = 'Pause Our Song';
+      }).catch(error => {
+        console.log("Autoplay was prevented by the browser.");
+        playBtn.textContent = 'Play Our Song';
+      });
+
+      // 2. Auto-Start Hearts Interval
+      if (!heartsRunning) {
+        heartInterval = setInterval(spawnHeart, 250);
+        heartsRunning = true;
+        startHeartsBtn.textContent = 'Stop Sending Love ❤️'; // UPDATED
+      }
+    }
+
+    // Run the auto-start function when the page is fully loaded
+    window.addEventListener('load', initAutoPlay);
+    
+    // Fallback: Also try to initialize on first user interaction
+    document.body.addEventListener('click', initAutoPlay, { once: true });
+
+
+  </script>
+</body>
+</html>
